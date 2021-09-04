@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const withNx = require('@nrwl/next/plugins/with-nx');
+const withPWA = require('next-pwa');
 
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
@@ -10,6 +11,11 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  pwa: {
+    dest: 'public',
+    register: true,
+    skipWaiting: true,
+  },
 };
 
-module.exports = withNx(nextConfig);
+module.exports = withNx(withPWA(nextConfig));
